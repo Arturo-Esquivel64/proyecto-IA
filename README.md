@@ -40,4 +40,36 @@ for chunk in completion:
     print(chunk.choices[0].delta.content or "", end="")
 
 ````
-    
+
+## CODIGO CURL
+````
+curl "https://api.groq.com/openai/v1/chat/completions" \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer ${GROQ_API_KEY}" \
+  -d '{
+         "messages": [
+           {
+             "role": "user",
+             "content": [
+               {
+                 "type": "text",
+                 "text": "dime mi estado de animo y dime un consejo. \n"
+               },
+               {
+                 "type": "image_url",
+                 "image_url": {
+                   "url": "'"${IMAGE_DATA_URL}"'"
+                 }
+               }
+             ]
+           }
+         ],
+         "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+         "temperature": 0.5,
+         "max_completion_tokens": 5750,
+         "top_p": 1,
+         "stream": true,
+         "stop": null
+       }'
+````
