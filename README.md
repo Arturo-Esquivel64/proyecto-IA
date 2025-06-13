@@ -53,6 +53,8 @@ for chunk in completion:
     print(chunk.choices[0].delta.content or "", end="")
 
 ## CODIGO DE GROQ
+
+````
 from groq import Groq
 
 client = Groq()
@@ -84,4 +86,6 @@ completion = client.chat.completions.create(
 
 for chunk in completion:
     print(chunk.choices[0].delta.content or "", end="")
+
+````
     
